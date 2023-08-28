@@ -10,20 +10,7 @@ const AuthProvider = ({ children }) => {
 
 
    
-useEffect(() => {
- const data = JSON.parse(localStorage.getItem("user_info"));
-const token = localStorage.getItem("token_rare");
-    if (token && data) {
-   console.log("jfj")
-      setAuth({
-        ...auth,
-        user: data,
-        token:token,
-      });
- 
-    }
-    //eslint-disable-next-line
-  }, []);
+
   return (
     <AuthContext.Provider value={[auth, setAuth]}>
       { children}

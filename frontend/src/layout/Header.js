@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { useAuth } from '../context/auth';
 import { AuthList } from '../context/UserLIst';
 import { Link, useNavigate } from 'react-router-dom';
@@ -10,6 +10,21 @@ const Header = () => {
   const [UserList, setUserList] = AuthList();
   const navigation = useNavigate();
 
+
+  useEffect(() => {
+    const data = JSON.parse(localStorage.getItem("user_info"));
+   const token = localStorage.getItem("token_rare");
+       if (token && data) {
+      console.log("jfj")
+         setAuth({
+           ...auth,
+           user: data,
+           token:token,
+         });
+    
+       }
+       //eslint-disable-next-line
+     }, []);
   const handleLogout = () => {
     setAuth({
       ...auth,
